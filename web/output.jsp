@@ -92,28 +92,7 @@
           </p>
         </div>
 
-        <div id="uploadbox">
-          <b style="font-size: 16px;color: #29608c;padding: 5px;margin-left: 52px;">File 1</b>
-
-          <div class="ui action input">
-            <form action="UploadServlet" method="post" enctype="multipart/form-data">
-              <input type="file"  style="background: #fff; border-radius: 0;" accept=".txt" name="firstsentence" placeholder="File 1...">
-              <input type="submit" style="background: #eaeaea; border-radius: 0;" class="ui button" value="Upload">
-            </form>
-          </div>
-
-          <b style="font-size: 16px;color: #29608c;padding: 5px;margin-left: 52px;">File 2</b>
-
-          <div class="ui action input">
-            <form action="UploadServlet1" method="post" enctype="multipart/form-data">
-              <input type="file"  style="background: #fff; border-radius: 0;" accept=".txt" name="secondsentence" placeholder="File 2...">
-              <input type="submit" class="ui button" value="Upload" style="background: #eaeaea; border-radius: 0;">
-            </form>
-          </div>
-
-
-
-        </div>
+        Similarity<% request.getAttribute("similarity"); %>
         <br/>
         <br/>
 
@@ -125,6 +104,8 @@
             <input type="submit" value="Check" class="ui green large button" style="color: white;">
             <input style="padding: 8px; "class="ui red small button" type="reset">
           </form>
+
+
 
 
 

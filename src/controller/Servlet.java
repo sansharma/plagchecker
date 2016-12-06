@@ -1,5 +1,6 @@
 package controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
@@ -14,17 +15,23 @@ public class Servlet extends javax.servlet.http.HttpServlet {
                     ServletContext context=getServletContext();
                     String filename1=(String)context.getAttribute("FileName1");
                     String filename2=(String)context.getAttribute("FileName2");
-            Scanner scanner1 = new Scanner( new File("E:/tomcat7/webapps/data/"+filename1));
+            Scanner scanner1 = new Scanner( new File("D:/Softwares/"+filename1));
             String text1 = scanner1.useDelimiter("\\A").next();
 
-            Scanner scanner = new Scanner( new File("E:/tomcat7/webapps/data/"+filename2));
+            Scanner scanner = new Scanner( new File("D:/Softwares/"+filename2));
             String text2 = scanner.useDelimiter("\\A").next();
 
             double similarity = new WordProcessor().getSimilarity(text1,text2);
+
             //System.out.println("Cosine similarity of Two Contents are: "+similarity);
             PrintWriter out = response.getWriter();
-            out.println("Plagiarism detected!");
-            out.println("Your file is"+ similarity +" equivalent to next file.: ");
+
+        out.println("Your file is"+ similarity +" equivalent to next file.: ");
+            request.setAttribute("msg", "Plagiarism detected!");
+            request.setAttribute("similarity",similarity);
+
+        RequestDispatcher rd = request.getRequestDispatcher("output.jsp");
+        rd.forward(request,response);
 
     }
 
